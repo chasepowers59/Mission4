@@ -27,30 +27,32 @@ namespace Mission4
                 }
             }
         }
-    public bool ValidInput(string userInput) // validate 1 letter, not a number
+  
+    public char GameResults(char[,] board)
         {
-            bool result = true;
-
-            if (userInput.Length > 1 || userInput.Length < 0)
+            // check rows
+            for (int row = 0; row < 3; row++)
             {
-                Console.WriteLine("Guess cant be more than 1 letter");
-                result = false;
+                if (board[row, 0] != ' ' && board[row, 0] == board[row, 1] && board[row, 1] == board[row, 2]) return board[row, 2];
             }
-            else if (!userInput.All(char.IsLetter))
+            // check column
+            for (int col = 0; col < 3; col++)
             {
-                Console.WriteLine("Input must be a letter");
-                result = false;
+                if (board[0, col] != ' ' && board[0, col] == board[1, col] && board[1, col] == board[2, col]) return board[0, col];
             }
+            // Check diagonals
+            if (board[0, 0] != ' ' &&
+                board[0, 0] == board[1, 1] &&
+                board[1, 1] == board[2, 2])
+                return board[0, 0];
 
-                return result;
-        }
-    public string GameResults(string[] gameboard)
-        {
-            string gameResults = "";
+            if (board[0, 2] != ' ' &&
+                board[0, 2] == board[1, 1] &&
+                board[1, 1] == board[2, 0])
+                return board[0, 2];
 
-
-            return gameResults;
-
+            // No winner
+            return ' ';
         }
 
     }
