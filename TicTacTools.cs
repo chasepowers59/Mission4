@@ -13,18 +13,20 @@ namespace Mission4
             {
                 for (int col = 0; col < 3; col++)
                 {
-                    Console.Write($"{board[row, col]}");
+                    Console.Write($" {board[row, col]} ");
                     if (col < 2)
                     {
-                        Console.WriteLine("|"); // this will seperate the columns 
-                    }
-                    Console.WriteLine();
-
-                    if (row < 2)
-                    {
-                        Console.WriteLine("---+---+---"); // row separator
+                        Console.Write("|"); // this will seperate the columns 
                     }
                 }
+
+                Console.WriteLine();
+
+                if (row < 2)
+                {
+                    Console.WriteLine("---+---+---"); // row separator
+                }
+
             }
         }
   
